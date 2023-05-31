@@ -1,7 +1,7 @@
 package com.example.myapplication
 
+import android.content.Intent
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -21,8 +21,9 @@ class MainActivity : ComponentActivity() {
         val inputField = findViewById<EditText>(R.id.etName)
         var submitButton = findViewById<Button>(R.id.btnSubmit)
         val offersButton = findViewById<Button>(R.id.btnOffers)
+        var enteredName = ""
         submitButton.setOnClickListener {
-            val enteredName = inputField.text.toString()
+            enteredName = inputField.text.toString()
             val message = "Welcome $enteredName"
             if (enteredName == "") {
                 offersButton.visibility = INVISIBLE
@@ -38,6 +39,11 @@ class MainActivity : ComponentActivity() {
                 inputField.text.clear()
                 offersButton.visibility = VISIBLE
             }
+        }
+        offersButton.setOnClickListener {
+            val intent = Intent(this, SecondActivity::class.java)
+            intent.putExtra("USER", enteredName)
+            startActivity(intent)
         }
     }
 }

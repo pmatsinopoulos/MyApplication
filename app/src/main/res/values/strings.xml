@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">My Fantastic Application</string>
+    <string name="button_to_view_offers">View Offers</string>
     <string name="hello_message">Hello from Android!</string>
     <string name="hint_for_name">Enter your name</string>
+    <string name="offer_1">you will get free access to all content for 1 month</string>
     <string name="send_name_button">Send</string>
     <string name="toast_to_enter_name">Please, enter your name!</string>
-    <string name="button_to_view_offers">View Offers</string>
 </resources>
