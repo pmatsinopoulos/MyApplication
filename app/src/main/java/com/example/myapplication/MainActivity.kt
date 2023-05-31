@@ -1,9 +1,11 @@
 package com.example.myapplication
 
 import android.os.Bundle
+import android.view.Gravity
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -17,9 +19,21 @@ class MainActivity : ComponentActivity() {
         val inputField = findViewById<EditText>(R.id.etName)
         var submitButton = findViewById<Button>(R.id.btnSubmit)
         submitButton.setOnClickListener {
-            val enteredName = inputField.text
+            val enteredName = inputField.text.toString()
             val message = "Welcome $enteredName"
-            greetingTextView.text = message
+            if (enteredName == "") {
+                val toast = Toast.makeText(
+                    this@MainActivity,
+                    R.string.toast_to_enter_name,
+                    Toast.LENGTH_LONG
+                )
+                toast.show()
+                greetingTextView.text = ""
+            }
+            else {
+                greetingTextView.text = message
+                inputField.text.clear()
+            }
         }
     }
 }
