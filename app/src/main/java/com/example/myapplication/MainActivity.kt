@@ -2,6 +2,8 @@ package com.example.myapplication
 
 import android.os.Bundle
 import android.view.Gravity
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -18,10 +20,12 @@ class MainActivity : ComponentActivity() {
         val greetingTextView = findViewById<TextView>(R.id.tvHello)
         val inputField = findViewById<EditText>(R.id.etName)
         var submitButton = findViewById<Button>(R.id.btnSubmit)
+        val offersButton = findViewById<Button>(R.id.btnOffers)
         submitButton.setOnClickListener {
             val enteredName = inputField.text.toString()
             val message = "Welcome $enteredName"
             if (enteredName == "") {
+                offersButton.visibility = INVISIBLE
                 val toast = Toast.makeText(
                     this@MainActivity,
                     R.string.toast_to_enter_name,
@@ -29,10 +33,10 @@ class MainActivity : ComponentActivity() {
                 )
                 toast.show()
                 greetingTextView.text = ""
-            }
-            else {
+            } else {
                 greetingTextView.text = message
                 inputField.text.clear()
+                offersButton.visibility = VISIBLE
             }
         }
     }
