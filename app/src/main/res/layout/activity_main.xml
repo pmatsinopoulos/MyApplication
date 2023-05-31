@@ -10,7 +10,7 @@
         android:id="@+id/tvHello"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello Peter!"
+        android:text="@string/hello_message"
         android:textColor="#3F51B5"
         android:textSize="34sp"
         android:textStyle="bold"
