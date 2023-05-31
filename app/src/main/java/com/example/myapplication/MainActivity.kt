@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -17,6 +18,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        Log.i("MYTAG", "MainActivity:OnCreate")
         val greetingTextView = findViewById<TextView>(R.id.tvHello)
         val inputField = findViewById<EditText>(R.id.etName)
         var submitButton = findViewById<Button>(R.id.btnSubmit)
@@ -24,7 +26,6 @@ class MainActivity : ComponentActivity() {
         var enteredName = ""
         submitButton.setOnClickListener {
             enteredName = inputField.text.toString()
-            val message = "Welcome $enteredName"
             if (enteredName == "") {
                 offersButton.visibility = INVISIBLE
                 val toast = Toast.makeText(
@@ -35,7 +36,10 @@ class MainActivity : ComponentActivity() {
                 toast.show()
                 greetingTextView.text = ""
             } else {
+                val message = "Welcome $enteredName"
+                Log.i("MYTAG", message)
                 greetingTextView.text = message
+                Log.i("MYTAG", "After displaying the message on the TextView")
                 inputField.text.clear()
                 offersButton.visibility = VISIBLE
             }
